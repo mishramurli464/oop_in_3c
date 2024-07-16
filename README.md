@@ -13,7 +13,7 @@ public class Person
     private string name;
     private int age;
 
-    // Properties (to provide controlled access to fields)
+    // Properties (to provide controlled access to fields/getter and setter is called as property)
     public string Name
     {
         get { return name; }
@@ -32,7 +32,7 @@ public class Person
         }
     }
 
-    // Constructor
+    // Constructor 
     public Person(string name, int age)
     {
         this.name = name;
@@ -63,14 +63,95 @@ public class Program
 
 ```
 
+![image](https://github.com/user-attachments/assets/d4701803-4975-4022-bd9a-eec574012873)
+
+### Access Modifirs  
+Constructors in C# are special methods that are invoked when an object of a class is created. They are used to initialize the object’s state, typically by setting the values of its fields or properties.   
+**Types of Constructors**
+1)Default Constructor
+A default constructor is one that takes no arguments. If no constructor is explicitly defined, the C# compiler automatically provides a default constructor that initializes the object’s   
+fields to their default values.   
+```c#
+public class Person
+{
+    public string Name;
+    public int Age;
+
+    // Default constructor
+    public Person()
+    {
+        Name = "Unknown";
+        Age = 0;
+    }
+}
+
+public class Program
+{
+    public static void Main()
+    {
+        Person person = new Person();
+        Console.WriteLine($"Name: {person.Name}, Age: {person.Age}");
+    }
+}
+
+```
+2)Parameterized Constructor  
+A parameterized constructor is one that takes arguments, allowing you to initialize the object with specific values.  
+```c#
+public class Person
+{
+    public string Name;
+    public int Age;
+
+    // Parameterized constructor
+    public Person(string name, int age)
+    {
+        Name = name;
+        Age = age;
+    }
+}
+
+public class Program
+{
+    public static void Main()
+    {
+        Person person = new Person("Alice", 30);
+        Console.WriteLine($"Name: {person.Name}, Age: {person.Age}");
+    }
+}
+```
+3)Static Constructor   
+A static constructor is used to initialize static members of a class. It is called automatically before the first instance is created or any static members are accessed.  
+```c#
+public class Person
+{
+    public static int Population;
+
+    // Static constructor
+    static Person()
+    {
+        Population = 1000;
+    }
+
+    public string Name;
+    public int Age;
+
+    public Person(string name, int age)
+    {
+        Name = name;
+        Age = age;
+    }
+}
+
+public class Program
+{
+    public static void Main()
+    {
+        Console.WriteLine($"Population: {Person.Population}");
+        Person person = new Person("Alice", 30);
+    }
+}
+
 ```
 
-Modifier	Accessible Within Class	Accessible Within Derived Class	Accessible Within Assembly	Accessible Outside Assembly
-public	Yes	Yes	Yes	Yes
-private	Yes	No	No	No
-protected	Yes	Yes	No	No
-internal	Yes	Yes	Yes	No
-protected internal	Yes	Yes	Yes	No
-private protected	Yes	Yes	No	No
 
-```

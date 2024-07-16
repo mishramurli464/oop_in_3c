@@ -68,7 +68,7 @@ public class Program
 ### Access Modifirs  
 Constructors in C# are special methods that are invoked when an object of a class is created. They are used to initialize the object’s state, typically by setting the values of its fields or properties.   
 **Types of Constructors**
-1)Default Constructor
+1)Default Constructor   
 A default constructor is one that takes no arguments. If no constructor is explicitly defined, the C# compiler automatically provides a default constructor that initializes the object’s   
 fields to their default values.   
 ```c#
@@ -149,6 +149,125 @@ public class Program
     {
         Console.WriteLine($"Population: {Person.Population}");
         Person person = new Person("Alice", 30);
+    }
+}
+
+```
+
+## 2) Inheritance 
+Inheritance allows a class to inherit fields and methods from another class. The class that inherits is called a derived class, and the class it inherits from is called a base class.  
+(ex- vehicle- car,bus,bike)
+
+```c#
+using System;
+
+// Base class
+public class Vehicle
+{
+    public string Brand { get; set; }
+    public int Year { get; set; }
+
+    public Vehicle(string brand, int year)
+    {
+        Brand = brand;
+        Year = year;
+    }
+
+    public void Start()
+    {
+        Console.WriteLine($"{Brand} is starting.");
+    }
+
+    public void Stop()
+    {
+        Console.WriteLine($"{Brand} is stopping.");
+    }
+}
+
+// Derived class: Car
+public class Car : Vehicle
+{
+    public int NumberOfDoors { get; set; }
+
+    public Car(string brand, int year, int numberOfDoors)
+        : base(brand, year)
+    {
+        NumberOfDoors = numberOfDoors;
+    }
+
+    public void Honk()
+    {
+        Console.WriteLine($"{Brand} is honking.");
+    }
+}
+
+// Derived class: Bike
+public class Bike : Vehicle
+{
+    public bool HasCarrier { get; set; }
+
+    public Bike(string brand, int year, bool hasCarrier)
+        : base(brand, year)
+    {
+        HasCarrier = hasCarrier;
+    }
+
+    public void RingBell()
+    {
+        Console.WriteLine($"{Brand} is ringing the bell.");
+    }
+}
+
+// Derived class: Bus
+public class Bus : Vehicle
+{
+    public int SeatingCapacity { get; set; }
+
+    public Bus(string brand, int year, int seatingCapacity)
+        : base(brand, year)
+    {
+        SeatingCapacity = seatingCapacity;
+    }
+
+    public void OpenDoors()
+    {
+        Console.WriteLine($"{Brand} bus is opening its doors.");
+    }
+}
+
+public class Program
+{
+    public static void Main(string[] args)
+    {
+        // Create an instance of the Car class
+        Car car = new Car("Toyota", 2021, 4);
+
+        // Access base class methods and properties
+        car.Start();
+        car.Stop();
+
+        // Access derived class method
+        car.Honk();
+
+        // Create an instance of the Bike class
+        Bike bike = new Bike("Honda", 2019, true);
+
+        // Access base class methods and properties
+        bike.Start();
+        bike.Stop();
+
+        // Access derived class method
+        bike.RingBell();
+
+        // Create an instance of the Bus class
+        Bus bus = new Bus("Mercedes", 2020, 50);
+
+        // Access base class methods and properties
+        bus.Start();
+        bus.Stop();
+
+        // Access derived class method
+        bus.OpenDoors();
     }
 }
 

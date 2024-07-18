@@ -1,4 +1,4 @@
-# oop_in_3c
+# oop_in_#c
 
 Object-Oriented Programming (OOP) is a paradigm that uses objects and classes to design and structure code. C# is inherently an object-oriented language and supports all OOP principles, including encapsulation, inheritance, and polymorphism.   
 ## 1) Encapsulation
